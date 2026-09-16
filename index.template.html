@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#4f2b67" />
+  <meta name="description" content="La Rueda del Poder: experiencia educativa de Fundación Agua de Coco sobre privilegios, desigualdades e interseccionalidad." />
+  <title>La Rueda del Poder · Fundación Agua de Coco</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#app">Saltar al juego</a>
+  <div class="paper-noise" aria-hidden="true"></div>
+  <div class="collage collage-a" aria-hidden="true"></div>
+  <div class="collage collage-b" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <button class="brand" type="button" data-action="home" aria-label="Volver al inicio">
+      <img class="brand-logo" src="assets/logoADC.png" alt="Fundación Agua de Coco" />
+    </button>
+    <div class="header-tag">Zubiak eraikitzen · Realitateak hurbiltzen</div>
+  </header>
+
+  <main id="app" class="app-shell" tabindex="-1">
+    <section class="screen screen--hero is-active" data-screen="home" aria-labelledby="home-title">
+      <div class="hero-grid">
+        <div class="hero-copy poster-paper poster-paper--tilt-left">
+          <p class="kicker">Experiencia interactiva · 11–18 años</p>
+          <h1 id="home-title"><span>La rueda</span><span>del poder</span></h1>
+          <p class="lead">No todas las puertas se abren igual.</p>
+          <p class="body-copy">Explora cómo el dinero, el lugar, el origen, la lengua, la identidad, las capacidades y otros contextos pueden abrir o complicar caminos. No hay ranking de privilegio: hay situaciones, cruces y decisiones.</p>
+          <div class="button-row">
+            <button class="btn btn--primary" type="button" data-action="choose-mode">Entrar en la rueda</button>
+            <button class="btn btn--paper" type="button" data-action="show-rules">¿Cómo se juega?</button>
+          </div>
+          <p class="privacy-note">🔒 No se guardan respuestas ni datos personales.</p>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="power-wheel power-wheel--hero">
+            <div class="wheel-core">PODER</div>
+            <span class="wheel-label wheel-label--1">DINERO</span>
+            <span class="wheel-label wheel-label--2">LUGAR</span>
+            <span class="wheel-label wheel-label--3">ORIGEN</span>
+            <span class="wheel-label wheel-label--4">LENGUA</span>
+            <span class="wheel-label wheel-label--5">IDENTIDAD</span>
+            <span class="wheel-label wheel-label--6">CAPACIDAD</span>
+          </div>
+          <div class="torn-note">¿DESDE DÓNDE<br />JUEGAS?</div>
+          <div class="sticker sticker--pink">Esto es un juego.<br />Las preguntas son reales.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="rules" aria-labelledby="rules-title">
+      <div class="panel panel--wide poster-paper rules-panel">
+        <div class="rules-intro">
+          <div>
+            <p class="kicker">Cómo se juega</p>
+            <h2 id="rules-title">No tienes que ganar. Tienes que mirar.</h2>
+            <p class="lead lead--small">El objetivo es recorrer <strong>5 puertas</strong> con un personaje y descubrir cómo su contexto puede facilitar, complicar o cambiar una misma situación.</p>
+          </div>
+          <div class="objective-card" aria-label="Objetivo del juego">
+            <span aria-hidden="true">🎯</span>
+            <div><strong>OBJETIVO</strong><p>Detectar barreras que a veces pasan desapercibidas, comparar puntos de partida y terminar pensando qué podemos hacer para abrir más puertas.</p></div>
+          </div>
+        </div>
+
+        <div class="how-grid" aria-label="Pasos del juego">
+          <article class="how-card"><strong>1</strong><span aria-hidden="true">🎭</span><h3>Elige un personaje</h3><p>Juegas desde una realidad ficticia. No tienes que contar nada sobre tu vida.</p></article>
+          <article class="how-card"><strong>2</strong><span aria-hidden="true">🎡</span><h3>Gira la rueda</h3><p>La rueda elige una dimensión: dinero, lugar, lengua, origen, identidad, capacidad y otras.</p></article>
+          <article class="how-card"><strong>3</strong><span aria-hidden="true">🚪</span><h3>Lee la puerta</h3><p>Aparece una situación cotidiana. La puerta indica cuánto esfuerzo o cuántas barreras encuentra <em>ese personaje en esa situación</em>.</p></article>
+          <article class="how-card"><strong>4</strong><span aria-hidden="true">💬</span><h3>Decide como tu personaje</h3><p>Elige qué puede hacer tu personaje desde su situación. Después verás también qué tendría que cambiar el entorno para que la oportunidad sea más justa.</p></article>
+          <article class="how-card"><strong>5</strong><span aria-hidden="true">🗺️</span><h3>Descubre el mapa</h3><p>Tras 5 puertas compararás otra realidad y verás un mapa de patrones, cruces y oportunidades de acción.</p></article>
+        </div>
+
+        <div class="door-legend" aria-labelledby="door-legend-title">
+          <div class="door-legend__head">
+            <p class="kicker">La clave del juego</p>
+            <h3 id="door-legend-title">¿Qué significa que una puerta esté abierta o tenga barreras?</h3>
+            <p>No describe el valor ni la capacidad de una persona. Describe <strong>las condiciones que encuentra en una situación concreta</strong>.</p>
+          </div>
+          <div class="door-legend__items">
+            <article class="door-key door-key--open"><span aria-hidden="true">🟢</span><div><strong>Puerta más abierta</strong><p>El personaje encuentra menos obstáculos externos para participar o decidir.</p></div></article>
+            <article class="door-key door-key--context"><span aria-hidden="true">🟡</span><div><strong>Depende del contexto</strong><p>Hay apoyos y barreras que pueden cambiar mucho el resultado.</p></div></article>
+            <article class="door-key door-key--barrier"><span aria-hidden="true">🟣</span><div><strong>Puerta con más barreras</strong><p>La misma posibilidad exige más esfuerzo, apoyo, tiempo o recursos que para otras personas.</p></div></article>
+          </div>
+          <p class="rules-note"><strong>Importante:</strong> una puerta con barreras no significa “no puede”. Y una puerta abierta no significa “lo tiene todo fácil”. Solo observamos qué condiciones pesan en ese momento.</p>
+        </div>
+
+        <div class="button-row">
+          <button id="rulesContinue" class="btn btn--primary" type="button" data-action="rules-continue">Empezar a jugar</button>
+          <button class="btn btn--paper" type="button" data-action="show-about">¿Por qué está diseñado así?</button>
+          <button class="btn btn--ghost" type="button" data-action="rules-back">Volver</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="about" aria-labelledby="about-title">
+      <div class="panel poster-paper">
+        <p class="kicker">Antes de empezar</p>
+        <h2 id="about-title">No es un test.</h2>
+        <div class="manifesto-grid">
+          <article><strong>01</strong><h3>Sin puntuación de privilegio</h3><p>Las dimensiones no suman puntos. Modifican situaciones y muestran barreras.</p></article>
+          <article><strong>02</strong><h3>Personajes ficticios</h3><p>El modo recomendado evita pedir a menores que expongan su vida personal.</p></article>
+          <article><strong>03</strong><h3>Interseccionalidad</h3><p>Dos contextos pueden reforzarse entre sí. El juego muestra esos cruces sin convertirlos en una fórmula.</p></article>
+          <article><strong>04</strong><h3>Termina en acción</h3><p>Ver, acompañar y cambiar: el objetivo es detectar desigualdades y pensar qué podemos hacer.</p></article>
+        </div>
+        <div class="button-row">
+          <button class="btn btn--primary" type="button" data-action="choose-mode">Elegir modo</button>
+          <button class="btn btn--ghost" type="button" data-action="home">Volver</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="mode" aria-labelledby="mode-title">
+      <div class="panel poster-paper">
+        <p class="kicker">Paso 1 de 2</p>
+        <h2 id="mode-title">¿Cómo vais a jugar?</h2>
+        <div class="choice-grid choice-grid--two">
+          <button class="mode-card" type="button" data-mode="individual">
+            <span class="mode-icon" aria-hidden="true">●</span>
+            <span><strong>Modo individual</strong><small>10–15 min · una persona · reflexión autónoma</small></span>
+          </button>
+          <button class="mode-card" type="button" data-mode="workshop">
+            <span class="mode-icon" aria-hidden="true">●●●</span>
+            <span><strong>Modo taller</strong><small>30–60 min · grupo · pausas para hablar y preguntas de facilitación</small></span>
+          </button>
+        </div>
+        <button class="btn btn--ghost" type="button" data-action="home">Volver</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="characters" aria-labelledby="characters-title">
+      <div class="panel panel--wide poster-paper">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Paso 2 de 2</p>
+            <h2 id="characters-title">Elige una realidad</h2>
+            <p class="body-copy">Jugarás con un personaje ficticio. Ninguno representa a un grupo entero: son puntos de partida para conversar.</p>
+          </div>
+          <button class="btn btn--paper btn--small" type="button" data-action="random-character">Elegir al azar</button>
+        </div>
+        <div id="characterGrid" class="character-grid" aria-live="polite"></div>
+        <button class="btn btn--ghost" type="button" data-action="back-mode">Volver</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="wheel" aria-labelledby="wheel-title">
+      <div class="game-topbar">
+        <button class="mini-brand" type="button" data-action="home">RUEDA DEL PODER</button>
+        <div class="game-topbar__right"><button class="help-button" type="button" data-action="show-rules" aria-label="Abrir instrucciones">? Cómo se juega</button><div class="progress-copy"><span id="doorProgress">Puerta 1 de 5</span><span id="modeBadge">Individual</span></div></div>
+      </div>
+      <div class="wheel-layout">
+        <div class="wheel-stage poster-paper">
+          <p class="kicker">Gira la rueda</p>
+          <h2 id="wheel-title">¿Qué dimensión aparece?</h2>
+          <div id="gameWheel" class="power-wheel power-wheel--game" aria-hidden="true"><div class="wheel-core">GIRA</div></div>
+          <button id="spinButton" class="btn btn--primary btn--big" type="button" data-action="spin">Girar la rueda</button>
+          <p id="wheelHint" class="microcopy">La rueda elegirá una dimensión que todavía no hayas recorrido.</p>
+        </div>
+        <aside class="player-strip poster-paper poster-paper--tilt-right" aria-label="Personaje actual">
+          <div id="playerAvatar" class="avatar avatar--large"></div>
+          <p class="kicker">Juegas como</p>
+          <h3 id="playerName"></h3>
+          <p id="playerSummary"></p>
+          <button class="text-button" type="button" data-action="change-character">Cambiar de personaje</button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="door" aria-labelledby="door-title">
+      <div class="game-topbar">
+        <button class="mini-brand" type="button" data-action="home">RUEDA DEL PODER</button>
+        <div class="game-topbar__right"><button class="help-button" type="button" data-action="show-rules" aria-label="Abrir instrucciones">? Cómo se juega</button><div class="progress-copy"><span id="doorProgress2">Puerta 1 de 5</span><span id="dimensionBadge"></span></div></div>
+      </div>
+      <div class="door-layout">
+        <article class="door-card poster-paper">
+          <div class="door-visual" aria-hidden="true"><span id="doorIcon">🚪</span></div>
+          <div>
+            <p id="doorDimension" class="kicker"></p>
+            <h2 id="door-title"></h2>
+            <p id="doorScenario" class="lead lead--small"></p>
+            <p class="condition-intro"><strong>¿Qué significa esta puerta?</strong> Mira las condiciones que encuentra este personaje en esta situación.</p>
+            <div id="conditionBox" class="condition-box"></div>
+          </div>
+        </article>
+        <section class="decision-card poster-paper" aria-labelledby="decision-title">
+          <p class="kicker">Tu decisión</p>
+          <h3 id="decision-title">¿Qué harías?</h3>
+          <p id="decisionPrompt" class="decision-prompt"></p>
+          <div id="choiceList" class="choice-list"></div>
+          <div id="decisionFeedback" class="feedback" hidden></div>
+          <button id="continueDoor" class="btn btn--primary" type="button" data-action="continue-door" hidden>Continuar</button>
+        </section>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="pause" aria-labelledby="pause-title">
+      <div class="pause-card poster-paper">
+        <div class="pause-sign">PAUSA<br />PARA<br />HABLAR</div>
+        <div>
+          <p class="kicker">Modo taller</p>
+          <h2 id="pause-title">¿Qué está pasando aquí?</h2>
+          <p id="pauseQuestion" class="lead"></p>
+          <p class="facilitator-note"><strong>Para quien facilita:</strong> deja espacio para distintas lecturas. No pidas a nadie que explique experiencias personales para “demostrar” un punto.</p>
+          <button class="btn btn--primary" type="button" data-action="resume-from-pause">Seguir jugando</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="cross" aria-labelledby="cross-title">
+      <div class="cross-card poster-paper">
+        <div class="cross-burst" aria-hidden="true">⚡</div>
+        <p class="kicker">Cruce de ruedas</p>
+        <h2 id="cross-title">Las desigualdades pueden reforzarse.</h2>
+        <div class="cross-tags"><span id="crossA"></span><b>+</b><span id="crossB"></span></div>
+        <p id="crossText" class="lead"></p>
+        <p class="body-copy">No significa “dos problemas = el doble de puntos”. Significa que una barrera puede cambiar cómo se vive otra.</p>
+        <button class="btn btn--primary" type="button" data-action="continue-cross">Ver otra puerta</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="switch" aria-labelledby="switch-title">
+      <div class="panel panel--wide poster-paper">
+        <p class="kicker">Cambia de rueda</p>
+        <h2 id="switch-title">La misma puerta. Otro punto de partida.</h2>
+        <p class="body-copy">Elige otro personaje para comparar una de las situaciones que ya has vivido.</p>
+        <div id="switchCharacterGrid" class="character-grid character-grid--compact"></div>
+        <div id="comparisonBox" class="comparison-box" hidden></div>
+        <button id="finishSwitch" class="btn btn--primary" type="button" data-action="finish-switch" hidden>Descubrir mi mapa</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="map" aria-labelledby="map-title">
+      <div class="panel panel--wide poster-paper">
+        <p class="kicker">Tu mapa de poder</p>
+        <h2 id="map-title">Patrones, no etiquetas.</h2>
+        <p class="body-copy">Este mapa resume las puertas que aparecieron para el personaje. No mide quién es “más” o “menos” privilegiado.</p>
+        <div class="map-grid">
+          <section class="map-column map-column--open"><h3>🟢 Suelen estar abiertas</h3><div id="mapOpen"></div></section>
+          <section class="map-column map-column--context"><h3>🟡 Dependen del contexto</h3><div id="mapContext"></div></section>
+          <section class="map-column map-column--barrier"><h3>🟣 Requieren más esfuerzo</h3><div id="mapBarrier"></div></section>
+        </div>
+        <div id="crossSummary" class="cross-summary"></div>
+        <button class="btn btn--primary" type="button" data-action="go-action">Ahora que lo ves…</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="action" aria-labelledby="action-title">
+      <div class="panel panel--wide poster-paper">
+        <p class="kicker">La rueda vuelve a girar</p>
+        <h2 id="action-title">¿Qué haces con tu poder?</h2>
+        <p class="lead">El poder no solo consiste en lo que tienes. También en lo que puedes hacer con ello.</p>
+        <div id="actionPaths" class="action-paths">
+          <button class="action-path" type="button" data-path="ver"><span>👁️</span><strong>VER</strong><small>Detectar una desigualdad que antes pasaba desapercibida.</small></button>
+          <button class="action-path" type="button" data-path="acompanar"><span>🤝</span><strong>ACOMPAÑAR</strong><small>Usar tu posición para que otras personas tengan más oportunidades.</small></button>
+          <button class="action-path" type="button" data-path="cambiar"><span>✊</span><strong>CAMBIAR</strong><small>Revisar una regla, hábito o espacio que deja a alguien fuera.</small></button>
+        </div>
+        <div id="challengeCard" class="challenge-card" hidden></div>
+        <div class="button-row">
+          <button id="restartButton" class="btn btn--primary" type="button" data-action="restart" hidden>Jugar con otra realidad</button>
+          <button id="printButton" class="btn btn--paper" type="button" data-action="print" hidden>Imprimir / guardar mapa</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Prototipo educativo · Fundación Agua de Coco · sin analítica ni almacenamiento local</p>
+  </footer>
+
+  <script src="src/content.js"></script>
+  <script src="src/game.js"></script>
+</body>
+</html>

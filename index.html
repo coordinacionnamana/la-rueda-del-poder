@@ -1,0 +1,1324 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#4f2b67" />
+  <meta name="description" content="La Rueda del Poder: experiencia educativa de Fundación Agua de Coco sobre privilegios, desigualdades e interseccionalidad." />
+  <!-- Archivo autocontenido: funciona al abrir index.html directamente, sin servidor. -->
+  <title>La Rueda del Poder · Fundación Agua de Coco</title>
+  <style>
+:root {
+  --green: #4f9337;
+  --green-dark: #2e6f35;
+  --green-soft: #8aa94a;
+  --purple: #4f2b67;
+  --purple-dark: #2d183d;
+  --purple-soft: #74528a;
+  --pink: #ed5b97;
+  --yellow: #f7c843;
+  --orange: #f59a23;
+  --paper: #fffaf0;
+  --ink: #271932;
+  --muted: #6c5f72;
+  --line: rgba(45, 24, 61, 0.18);
+  --shadow: rgba(45, 24, 61, 0.22);
+  --radius: 28px;
+  --max: 1180px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--yellow); scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 70%, rgba(237, 91, 151, .95) 0 12%, transparent 12.4%),
+    radial-gradient(circle at 89% 19%, rgba(79, 147, 55, .78) 0 7%, transparent 7.3%),
+    linear-gradient(135deg, #ffd955 0%, var(--yellow) 45%, #f8b72e 100%);
+  overflow-x: hidden;
+}
+button, input { font: inherit; }
+button { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 4px solid #111; outline-offset: 4px; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+
+.skip-link {
+  position: fixed; left: 12px; top: 12px; z-index: 100;
+  padding: .7rem 1rem; background: #fff; color: #111;
+  transform: translateY(-140%); transition: transform .15s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+.paper-noise {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .2;
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,.18) 50%, transparent 50%),
+    linear-gradient(rgba(255,255,255,.14) 50%, transparent 50%);
+  background-size: 7px 7px; mix-blend-mode: overlay;
+}
+.collage { position: fixed; z-index: -1; pointer-events: none; }
+.collage-a {
+  width: 420px; height: 300px; left: -110px; bottom: 3vh; transform: rotate(-10deg);
+  background: radial-gradient(circle, var(--purple-dark) 0 11%, transparent 12%) 0 0 / 18px 18px;
+  opacity: .62;
+}
+.collage-b {
+  width: 440px; height: 170px; right: -120px; bottom: -25px; transform: rotate(7deg);
+  background: var(--purple); border-radius: 60% 0 0 0;
+}
+
+.site-header, .site-footer, .app-shell { width: min(var(--max), calc(100% - 32px)); margin-inline: auto; }
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 22px 0 10px; }
+.brand { display: inline-flex; align-items: center; border: 0; background: transparent; padding: 0; transform: rotate(-2deg); cursor: pointer; }
+.brand-logo { display: block; width: clamp(150px, 18vw, 220px); height: auto; object-fit: contain; }
+.header-tag { background: var(--purple); color: white; padding: .65rem 1rem; font-weight: 900; text-transform: uppercase; font-size: .76rem; transform: rotate(1.5deg); box-shadow: 6px 6px 0 var(--pink); }
+
+.app-shell { min-height: 76vh; padding: 28px 0 42px; }
+.screen { display: none; animation: screen-in .35s ease both; }
+.screen.is-active { display: block; }
+@keyframes screen-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+.poster-paper {
+  position: relative; background: var(--paper); border-radius: var(--radius);
+  box-shadow: 12px 12px 0 var(--purple), 0 22px 50px var(--shadow);
+}
+.poster-paper::after {
+  content: ""; position: absolute; width: 130px; height: 28px; right: 8%; bottom: -15px;
+  background: var(--orange); transform: rotate(-3deg); opacity: .9;
+}
+.poster-paper--tilt-left { transform: rotate(-1deg); }
+.poster-paper--tilt-right { transform: rotate(1.2deg); }
+.panel { max-width: 940px; margin: 24px auto 50px; padding: clamp(28px, 6vw, 68px); }
+.panel--wide { max-width: 1120px; }
+
+.kicker { margin: 0 0 .65rem; color: var(--pink); font-weight: 950; letter-spacing: .08em; text-transform: uppercase; font-size: .78rem; }
+h1,h2,h3,p { margin-top: 0; }
+h1,h2 { font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; text-transform: uppercase; color: var(--purple); letter-spacing: .005em; }
+h1 { margin-bottom: 1rem; font-size: clamp(4rem, 10vw, 8.7rem); line-height: .76; }
+h1 span { display: block; width: max-content; max-width: 100%; padding: .02em .1em .08em; background: var(--paper); box-shadow: 9px 9px 0 rgba(79,43,103,.12); }
+h1 span:nth-child(1) { transform: rotate(-3deg); }
+h1 span:nth-child(2) { margin-left: clamp(8px, 8vw, 90px); transform: rotate(2deg); color: var(--green-dark); }
+h2 { margin-bottom: .85rem; font-size: clamp(2.8rem, 6vw, 5.8rem); line-height: .88; }
+h3 { font-size: 1.15rem; }
+.lead { max-width: 800px; margin-bottom: 1.2rem; font-size: clamp(1.3rem, 2.5vw, 2.1rem); line-height: 1.15; font-weight: 800; }
+.lead--small { font-size: clamp(1.15rem, 2vw, 1.55rem); }
+.body-copy { max-width: 790px; color: #45384d; line-height: 1.64; font-size: 1.02rem; }
+.microcopy, .privacy-note { color: var(--muted); font-size: .88rem; }
+
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); gap: clamp(28px, 6vw, 80px); align-items: center; }
+.hero-copy { padding: clamp(28px, 5vw, 62px); }
+.hero-art { position: relative; min-height: 610px; display: grid; place-items: center; }
+
+.power-wheel { position: relative; border-radius: 50%; background: conic-gradient(from -18deg,
+  var(--green) 0 36deg, var(--paper) 36deg 41deg,
+  var(--purple) 41deg 77deg, var(--paper) 77deg 82deg,
+  var(--pink) 82deg 118deg, var(--paper) 118deg 123deg,
+  var(--orange) 123deg 159deg, var(--paper) 159deg 164deg,
+  var(--green-soft) 164deg 200deg, var(--paper) 200deg 205deg,
+  var(--purple-soft) 205deg 241deg, var(--paper) 241deg 246deg,
+  var(--pink) 246deg 282deg, var(--paper) 282deg 287deg,
+  var(--green-dark) 287deg 323deg, var(--paper) 323deg 328deg,
+  var(--orange) 328deg 360deg);
+  border: 12px solid var(--paper); box-shadow: 14px 14px 0 var(--purple), 0 20px 40px rgba(45,24,61,.22);
+}
+.power-wheel::after { content:""; position:absolute; inset: 15%; border-radius:50%; background:var(--paper); box-shadow: inset 0 0 0 8px var(--purple); }
+.power-wheel--hero { width: min(42vw, 450px); aspect-ratio: 1; transform: rotate(8deg); }
+.wheel-core { position:absolute; z-index:3; left:50%; top:50%; transform:translate(-50%,-50%); width:32%; aspect-ratio:1; display:grid; place-items:center; border-radius:50%; background:var(--pink); color:white; font-family:Impact, sans-serif; font-size:clamp(1.1rem,2.6vw,2rem); letter-spacing:.05em; }
+.wheel-label { position:absolute; z-index:4; padding:.3rem .5rem; background:var(--paper); color:var(--purple); font-weight:950; font-size:.7rem; box-shadow:3px 3px 0 rgba(0,0,0,.12); }
+.wheel-label--1{left:-5%;top:23%;transform:rotate(-9deg)} .wheel-label--2{right:-4%;top:20%;transform:rotate(7deg)} .wheel-label--3{right:-7%;top:56%;transform:rotate(-4deg)} .wheel-label--4{left:3%;bottom:8%;transform:rotate(3deg)} .wheel-label--5{right:10%;bottom:4%;transform:rotate(-5deg)} .wheel-label--6{left:-7%;top:51%;transform:rotate(5deg)}
+.torn-note { position:absolute; left:4%; bottom:8%; z-index:5; padding:1rem 1.2rem; background:var(--paper); color:var(--purple); font-family:Impact,sans-serif; font-size:1.55rem; line-height:.93; transform:rotate(-8deg); box-shadow:7px 8px 0 var(--green); }
+.sticker { position:absolute; z-index:5; padding:.85rem 1rem; color:white; font-weight:900; text-transform:uppercase; line-height:1.05; font-size:.83rem; box-shadow:6px 6px 0 var(--purple); }
+.sticker--pink { right:0; top:8%; background:var(--pink); transform:rotate(7deg); }
+
+.button-row { display:flex; flex-wrap:wrap; gap:.8rem; align-items:center; margin-top:1.4rem; }
+.btn { border:0; border-radius:999px; padding:.9rem 1.2rem; font-weight:950; text-transform:uppercase; letter-spacing:.02em; transition:transform .15s ease, box-shadow .15s ease; }
+.btn:hover { transform:translateY(-2px) rotate(-1deg); }
+.btn--primary { background:var(--purple); color:white; box-shadow:6px 6px 0 var(--green); }
+.btn--paper { background:var(--paper); color:var(--purple); border:3px solid var(--purple); box-shadow:5px 5px 0 var(--pink); }
+.btn--ghost { background:transparent; color:var(--purple); border:2px solid var(--line); }
+.btn--small { font-size:.78rem; padding:.65rem .9rem; }
+.btn--big { padding:1rem 1.6rem; font-size:1.05rem; }
+.btn:disabled { opacity:.55; cursor:wait; }
+.text-button { border:0; background:transparent; padding:.2rem 0; color:var(--purple); text-decoration:underline; font-weight:800; }
+
+.manifesto-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:2rem 0; }
+.manifesto-grid article { padding:1.2rem; background:#fff; border:2px solid var(--line); border-radius:18px; }
+.manifesto-grid article > strong { display:inline-grid; place-items:center; width:44px; height:44px; border-radius:50%; background:var(--yellow); color:var(--purple); }
+.manifesto-grid h3 { margin:.8rem 0 .3rem; color:var(--purple); }
+.manifesto-grid p { margin:0; color:#514458; line-height:1.5; }
+
+.choice-grid--two { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:2rem 0; }
+.mode-card { min-height:190px; display:flex; gap:1rem; align-items:flex-start; padding:1.4rem; text-align:left; border:3px solid var(--purple); border-radius:24px; background:#fff; box-shadow:8px 8px 0 var(--green); }
+.mode-card:hover { transform:translateY(-4px) rotate(-1deg); }
+.mode-card strong { display:block; margin-bottom:.55rem; color:var(--purple); font-size:1.35rem; text-transform:uppercase; }
+.mode-card small { display:block; color:#5c4f62; line-height:1.5; font-size:.95rem; }
+.mode-icon { flex:0 0 auto; color:var(--pink); font-size:1.45rem; letter-spacing:-.25em; }
+
+.section-head { display:flex; align-items:end; justify-content:space-between; gap:1.2rem; }
+.character-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin:1.6rem 0 2rem; }
+.character-card { position:relative; min-height:220px; display:flex; flex-direction:column; align-items:flex-start; gap:.85rem; padding:1.2rem; text-align:left; border:2px solid var(--line); border-radius:22px; background:#fff; box-shadow:6px 6px 0 rgba(79,147,55,.25); transition:transform .15s ease, border-color .15s ease; }
+.character-card:hover, .character-card.is-selected { transform:translateY(-4px) rotate(-.5deg); border-color:var(--purple); }
+.character-card--compact { min-height:170px; }
+.avatar { display:grid; place-items:center; width:58px; height:58px; border-radius:50%; color:white; background:var(--purple); font-family:Impact,sans-serif; font-size:1.5rem; box-shadow:5px 5px 0 var(--yellow); }
+.avatar--1{background:var(--green)} .avatar--2{background:var(--purple)} .avatar--3{background:var(--pink)} .avatar--4{background:var(--green-dark)}
+.avatar--large { width:84px; height:84px; font-size:2.1rem; margin-bottom:.8rem; }
+.character-copy strong { display:block; margin-bottom:.45rem; color:var(--purple); font-size:1.18rem; }
+.character-copy small { color:#5e5164; line-height:1.45; font-size:.9rem; }
+.card-arrow { position:absolute; right:16px; top:12px; color:var(--green); font-size:1.4rem; }
+
+.game-topbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:18px; }
+.mini-brand { border:0; background:var(--purple); color:white; padding:.6rem .8rem; font-weight:950; text-transform:uppercase; transform:rotate(-1deg); box-shadow:5px 5px 0 var(--green); }
+.progress-copy { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:flex-end; }
+.progress-copy span { padding:.45rem .75rem; background:var(--paper); border-radius:999px; color:var(--purple); font-weight:850; font-size:.78rem; box-shadow:3px 3px 0 rgba(79,43,103,.13); }
+
+.wheel-layout { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:22px; align-items:stretch; }
+.wheel-stage { min-height:640px; padding:clamp(28px,5vw,58px); display:flex; flex-direction:column; align-items:center; text-align:center; overflow:hidden; }
+.wheel-stage h2 { font-size:clamp(2.8rem,5vw,4.8rem); }
+.power-wheel--game { --spin: 0deg; width:min(68vw,390px); aspect-ratio:1; margin:1.2rem auto 2rem; transform:rotate(var(--spin)); }
+.power-wheel--game.is-spinning { animation:spin-wheel 1s cubic-bezier(.18,.8,.2,1) forwards; }
+@keyframes spin-wheel { from{transform:rotate(0)} to{transform:rotate(var(--spin))} }
+.wheel-chip { --angle: calc(var(--i) * 36deg); position:absolute; z-index:5; left:50%; top:50%; width:42px; height:42px; display:grid; place-items:center; border-radius:50%; background:var(--paper); border:2px solid var(--purple); transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-155px) rotate(calc(var(--angle) * -1)); font-size:1.1rem; }
+.player-strip { padding:1.5rem; align-self:start; }
+.player-strip h3 { margin:.2rem 0 .5rem; color:var(--purple); font-size:1.6rem; }
+.player-strip p { color:#5c4f62; line-height:1.5; }
+
+.door-layout { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr); gap:22px; }
+.door-card, .decision-card { padding:clamp(24px,4vw,48px); }
+.door-card { display:grid; grid-template-columns:170px minmax(0,1fr); gap:1.4rem; align-items:start; min-height:520px; }
+.door-visual { width:150px; min-height:270px; display:grid; place-items:center; border:12px solid var(--purple); border-bottom-width:20px; background:linear-gradient(90deg,var(--pink),var(--orange)); box-shadow:9px 9px 0 var(--green); }
+.door-visual span { font-size:4rem; filter:grayscale(1) contrast(1.3); }
+.condition-box { margin-top:1.4rem; padding:1rem 1.1rem; border-radius:18px; border:2px solid var(--line); }
+.condition-box strong { text-transform:uppercase; font-size:.82rem; letter-spacing:.05em; }
+.condition-box p { margin:.4rem 0 0; line-height:1.5; }
+.condition-box--open { background:#e9f4e2; border-color:#9fc58b; }
+.condition-box--context { background:#fff3c5; border-color:#e5c357; }
+.condition-box--barrier { background:#eee5f3; border-color:#ab8abc; }
+.decision-card h3 { color:var(--purple); font-size:1.5rem; }
+.decision-prompt { margin:-.35rem 0 1rem; color:#4f4660; line-height:1.45; font-size:.95rem; }
+.choice-list { display:grid; gap:.75rem; }
+.decision-option { display:grid; grid-template-columns:38px minmax(0,1fr); gap:.75rem; align-items:start; width:100%; padding:1rem; text-align:left; border:2px solid var(--line); border-radius:16px; background:#fff; }
+.decision-option span { display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:var(--yellow); color:var(--purple); font-weight:950; }
+.decision-option strong { line-height:1.35; }
+.decision-option:not(:disabled):hover { border-color:var(--purple); transform:translateX(3px); }
+.decision-option.is-selected { border-color:var(--green); background:#f3f8ee; box-shadow:5px 5px 0 rgba(79,147,55,.22); }
+.feedback { margin:1rem 0; padding:1rem; border-left:7px solid var(--pink); background:#fff0f6; line-height:1.5; }
+.feedback strong { display:block; margin-bottom:.25rem; color:var(--purple); font-size:.77rem; letter-spacing:.05em; }
+.feedback p { margin:0; }
+.feedback-system { margin-top:.9rem; padding-top:.85rem; border-top:2px dashed rgba(74,48,104,.22); }
+.feedback-system strong { color:var(--green-dark); }
+
+.pause-card, .cross-card { max-width:960px; margin:24px auto 50px; padding:clamp(28px,6vw,68px); }
+.pause-card { display:grid; grid-template-columns:210px minmax(0,1fr); gap:2rem; align-items:center; }
+.pause-sign { padding:1.2rem; background:var(--purple); color:white; font-family:Impact,sans-serif; font-size:2.8rem; line-height:.84; transform:rotate(-5deg); box-shadow:10px 10px 0 var(--pink); }
+.facilitator-note { padding:1rem; background:#f0e8f4; border-radius:16px; line-height:1.5; }
+.cross-card { text-align:center; overflow:hidden; }
+.cross-burst { width:80px; height:80px; display:grid; place-items:center; margin:0 auto 1rem; border-radius:50%; background:var(--yellow); font-size:2.2rem; box-shadow:7px 7px 0 var(--purple); }
+.cross-tags { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.7rem; margin:1.2rem 0; }
+.cross-tags span { padding:.65rem .9rem; background:var(--green); color:white; border-radius:999px; font-weight:950; text-transform:uppercase; box-shadow:4px 4px 0 var(--purple); }
+.cross-tags b { color:var(--pink); font-size:1.6rem; }
+
+.comparison-box { margin:1rem 0 1.5rem; padding:1.2rem; background:#f6efe2; border:2px dashed var(--purple); border-radius:20px; }
+.comparison-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.comparison-grid article { padding:1rem; background:white; border-radius:16px; }
+.comparison-grid article > strong { display:block; margin-bottom:.55rem; color:var(--purple); font-size:1.2rem; }
+.comparison-grid p { margin:.65rem 0 0; line-height:1.5; }
+.status-pill { display:inline-block; padding:.35rem .55rem; border-radius:999px; font-size:.72rem; font-weight:900; text-transform:uppercase; }
+.status-pill--open{background:#e1f0dc;color:#285d2b}.status-pill--context{background:#fff0af;color:#715710}.status-pill--barrier{background:#e7d9ef;color:#4d2863}
+.comparison-question { margin-bottom:0; color:var(--purple); font-weight:900; font-size:1.1rem; }
+
+.map-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin:1.5rem 0; }
+.map-column { min-height:260px; padding:1rem; border-radius:20px; }
+.map-column h3 { color:var(--purple); text-transform:uppercase; font-size:.95rem; }
+.map-column--open{background:#e7f1df}.map-column--context{background:#fff1b9}.map-column--barrier{background:#ece1f2}
+.map-item { padding:.85rem 0; border-top:1px solid rgba(45,24,61,.14); }
+.map-item strong { color:var(--purple); }
+.map-item p { margin:.3rem 0 0; line-height:1.4; font-size:.9rem; }
+.empty-map { color:var(--muted); font-style:italic; }
+.cross-summary { margin:1.5rem 0; padding:1.2rem; background:#fff; border:2px solid var(--line); border-radius:18px; }
+.cross-summary article + article { border-top:1px solid var(--line); padding-top:.9rem; margin-top:.9rem; }
+.cross-summary p { line-height:1.5; }
+
+.action-paths { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin:1.8rem 0; }
+.action-path { min-height:220px; display:flex; flex-direction:column; align-items:flex-start; gap:.5rem; padding:1.2rem; text-align:left; border:3px solid var(--purple); border-radius:22px; background:#fff; box-shadow:7px 7px 0 var(--green); }
+.action-path:hover, .action-path.is-selected { transform:translateY(-4px) rotate(-1deg); background:#f7f0fa; }
+.action-path span { font-size:2rem; }
+.action-path strong { color:var(--purple); font-size:1.45rem; }
+.action-path small { color:#5b4d62; line-height:1.5; font-size:.92rem; }
+.challenge-card { margin:1.5rem 0; padding:1.3rem; background:var(--purple); color:white; border-radius:20px; box-shadow:9px 9px 0 var(--pink); transform:rotate(.4deg); }
+.challenge-card .kicker { color:#ffd34e; }
+.challenge-card h3 { margin:.2rem 0 .5rem; color:white; font-size:1.5rem; }
+.challenge-card p:last-child { margin-bottom:0; line-height:1.55; }
+
+.site-footer { padding:0 0 28px; color:rgba(45,24,61,.75); font-size:.78rem; font-weight:750; }
+
+@media (max-width: 900px) {
+  .hero-grid, .wheel-layout, .door-layout { grid-template-columns:1fr; }
+  .hero-art { min-height:500px; }
+  .power-wheel--hero { width:min(78vw,420px); }
+  .player-strip { display:grid; grid-template-columns:auto 1fr; column-gap:1rem; align-items:center; }
+  .player-strip .text-button { grid-column:2; justify-self:start; }
+  .character-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .door-card { grid-template-columns:130px minmax(0,1fr); }
+  .door-visual { width:115px; min-height:220px; }
+  .map-grid, .action-paths { grid-template-columns:1fr; }
+}
+
+@media (max-width: 620px) {
+  .site-header { align-items:flex-start; }
+  .header-tag { display:none; }
+  .app-shell { padding-top:16px; }
+  .hero-art { min-height:420px; }
+  .torn-note { left:0; }
+  .sticker--pink { right:2%; top:3%; }
+  .manifesto-grid, .choice-grid--two, .character-grid, .comparison-grid { grid-template-columns:1fr; }
+  .section-head { align-items:flex-start; flex-direction:column; }
+  .game-topbar { align-items:flex-start; }
+  .door-card { grid-template-columns:1fr; }
+  .door-visual { width:100%; min-height:125px; border-width:8px; border-bottom-width:12px; }
+  .door-visual span { font-size:3rem; }
+  .pause-card { grid-template-columns:1fr; }
+  .pause-sign { width:max-content; font-size:2rem; }
+  .wheel-chip { transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-35vw) rotate(calc(var(--angle) * -1)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+}
+
+@media print {
+  body { background:white; }
+  .site-header, .site-footer, .game-topbar, .button-row, #actionPaths, .collage, .paper-noise { display:none !important; }
+  .screen { display:none !important; }
+  [data-screen="map"], [data-screen="action"].is-active { display:block !important; }
+  .poster-paper { box-shadow:none; border:1px solid #aaa; }
+  .poster-paper::after { display:none; }
+  .panel { max-width:none; margin:0; padding:20px; }
+}
+
+
+/* ---------- Cómo se juega ---------- */
+.rules-panel { max-width: 1120px; }
+.rules-intro { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr); gap:22px; align-items:start; }
+.objective-card { display:flex; gap:1rem; align-items:flex-start; padding:1.2rem; background:var(--purple); color:white; border-radius:20px; box-shadow:8px 8px 0 var(--green); transform:rotate(1deg); }
+.objective-card > span { font-size:2rem; }
+.objective-card strong { display:block; color:var(--yellow); letter-spacing:.06em; font-size:.8rem; }
+.objective-card p { margin:.35rem 0 0; line-height:1.5; }
+.how-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; margin:2rem 0; }
+.how-card { position:relative; min-height:245px; padding:1.05rem; background:#fff; border:2px solid var(--line); border-radius:18px; box-shadow:5px 5px 0 rgba(79,147,55,.18); }
+.how-card > strong { position:absolute; right:10px; top:8px; display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--purple); color:#fff; font-size:.78rem; }
+.how-card > span { display:block; margin-bottom:.65rem; font-size:2rem; }
+.how-card h3 { margin-bottom:.45rem; color:var(--purple); }
+.how-card p { margin-bottom:0; color:#5c4f62; line-height:1.48; font-size:.9rem; }
+.door-legend { margin:1.4rem 0 .5rem; padding:1.35rem; background:#f7f0e3; border:3px dashed var(--purple); border-radius:22px; }
+.door-legend__head h3 { margin:.2rem 0 .55rem; color:var(--purple); font-size:1.45rem; }
+.door-legend__head > p:last-child { margin-bottom:1rem; line-height:1.5; }
+.door-legend__items { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.door-key { display:flex; gap:.75rem; align-items:flex-start; padding:1rem; border-radius:16px; background:#fff; }
+.door-key > span { font-size:1.15rem; }
+.door-key strong { display:block; color:var(--purple); margin-bottom:.3rem; }
+.door-key p { margin:0; line-height:1.45; font-size:.9rem; color:#5c4f62; }
+.door-key--open { border-left:7px solid var(--green); }
+.door-key--context { border-left:7px solid var(--yellow); }
+.door-key--barrier { border-left:7px solid var(--purple); }
+.rules-note { margin:1rem 0 0; padding:.85rem 1rem; background:#fff; border-radius:14px; line-height:1.5; }
+.game-topbar__right { display:flex; align-items:center; justify-content:flex-end; gap:.7rem; flex-wrap:wrap; }
+.help-button { border:2px solid var(--purple); border-radius:999px; padding:.48rem .7rem; background:var(--paper); color:var(--purple); font-weight:900; font-size:.76rem; box-shadow:3px 3px 0 var(--green); }
+.help-button:hover { transform:translateY(-1px); }
+.condition-intro { margin:1.25rem 0 .45rem; padding-top:1rem; border-top:1px dashed var(--line); color:#5c4f62; line-height:1.45; font-size:.9rem; }
+.condition-intro strong { color:var(--purple); }
+.condition-meaning { font-weight:800; color:var(--ink); }
+
+@media (max-width: 1000px) {
+  .how-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+
+@media (max-width: 760px) {
+  .rules-intro, .door-legend__items { grid-template-columns:1fr; }
+  .how-grid { grid-template-columns:1fr 1fr; }
+  .game-topbar__right { align-items:flex-end; flex-direction:column; }
+}
+
+@media (max-width: 520px) {
+  .how-grid { grid-template-columns:1fr; }
+  .how-card { min-height:auto; }
+}
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#app">Saltar al juego</a>
+  <div class="paper-noise" aria-hidden="true"></div>
+  <div class="collage collage-a" aria-hidden="true"></div>
+  <div class="collage collage-b" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <button class="brand" type="button" data-action="home" aria-label="Volver al inicio">
+      <img class="brand-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAABQCAYAAAAnSfh8AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6N0YzRDEwREY0NEI0MTFFOUExQ0RFRjIyMTVCNDFCNjMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6N0YzRDEwRTA0NEI0MTFFOUExQ0RFRjIyMTVCNDFCNjMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3RjNEMTBERDQ0QjQxMUU5QTFDREVGMjIxNUI0MUI2MyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3RjNEMTBERTQ0QjQxMUU5QTFDREVGMjIxNUI0MUI2MyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjvW+pwAABgUSURBVHja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" alt="Fundación Agua de Coco" />
+    </button>
+    <div class="header-tag">Zubiak eraikitzen · Realitateak hurbiltzen</div>
+  </header>
+
+  <main id="app" class="app-shell" tabindex="-1">
+    <section class="screen screen--hero is-active" data-screen="home" aria-labelledby="home-title">
+      <div class="hero-grid">
+        <div class="hero-copy poster-paper poster-paper--tilt-left">
+          <p class="kicker">Experiencia interactiva · 11–18 años</p>
+          <h1 id="home-title"><span>La rueda</span><span>del poder</span></h1>
+          <p class="lead">No todas las puertas se abren igual.</p>
+          <p class="body-copy">Explora cómo el dinero, el lugar, el origen, la lengua, la identidad, las capacidades y otros contextos pueden abrir o complicar caminos. No hay ranking de privilegio: hay situaciones, cruces y decisiones.</p>
+          <div class="button-row">
+            <button class="btn btn--primary" type="button" data-action="choose-mode">Entrar en la rueda</button>
+            <button class="btn btn--paper" type="button" data-action="show-rules">¿Cómo se juega?</button>
+          </div>
+          <p class="privacy-note">🔒 No se guardan respuestas ni datos personales.</p>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="power-wheel power-wheel--hero">
+            <div class="wheel-core">PODER</div>
+            <span class="wheel-label wheel-label--1">DINERO</span>
+            <span class="wheel-label wheel-label--2">LUGAR</span>
+            <span class="wheel-label wheel-label--3">ORIGEN</span>
+            <span class="wheel-label wheel-label--4">LENGUA</span>
+            <span class="wheel-label wheel-label--5">IDENTIDAD</span>
+            <span class="wheel-label wheel-label--6">CAPACIDAD</span>
+          </div>
+          <div class="torn-note">¿DESDE DÓNDE<br />JUEGAS?</div>
+          <div class="sticker sticker--pink">Esto es un juego.<br />Las preguntas son reales.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="rules" aria-labelledby="rules-title">
+      <div class="panel panel--wide poster-paper rules-panel">
+        <div class="rules-intro">
+          <div>
+            <p class="kicker">Cómo se juega</p>
+            <h2 id="rules-title">No tienes que ganar. Tienes que mirar.</h2>
+            <p class="lead lead--small">El objetivo es recorrer <strong>5 puertas</strong> con un personaje y descubrir cómo su contexto puede facilitar, complicar o cambiar una misma situación.</p>
+          </div>
+          <div class="objective-card" aria-label="Objetivo del juego">
+            <span aria-hidden="true">🎯</span>
+            <div><strong>OBJETIVO</strong><p>Detectar barreras que a veces pasan desapercibidas, comparar puntos de partida y terminar pensando qué podemos hacer para abrir más puertas.</p></div>
+          </div>
+        </div>
+
+        <div class="how-grid" aria-label="Pasos del juego">
+          <article class="how-card"><strong>1</strong><span aria-hidden="true">🎭</span><h3>Elige un personaje</h3><p>Juegas desde una realidad ficticia. No tienes que contar nada sobre tu vida.</p></article>
+          <article class="how-card"><strong>2</strong><span aria-hidden="true">🎡</span><h3>Gira la rueda</h3><p>La rueda elige una dimensión: dinero, lugar, lengua, origen, identidad, capacidad y otras.</p></article>
+          <article class="how-card"><strong>3</strong><span aria-hidden="true">🚪</span><h3>Lee la puerta</h3><p>Aparece una situación cotidiana. La puerta indica cuánto esfuerzo o cuántas barreras encuentra <em>ese personaje en esa situación</em>.</p></article>
+          <article class="how-card"><strong>4</strong><span aria-hidden="true">💬</span><h3>Decide como tu personaje</h3><p>Elige qué puede hacer tu personaje desde su situación. Después verás también qué tendría que cambiar el entorno para que la oportunidad sea más justa.</p></article>
+          <article class="how-card"><strong>5</strong><span aria-hidden="true">🗺️</span><h3>Descubre el mapa</h3><p>Tras 5 puertas compararás otra realidad y verás un mapa de patrones, cruces y oportunidades de acción.</p></article>
+        </div>
+
+        <div class="door-legend" aria-labelledby="door-legend-title">
+          <div class="door-legend__head">
+            <p class="kicker">La clave del juego</p>
+            <h3 id="door-legend-title">¿Qué significa que una puerta esté abierta o tenga barreras?</h3>
+            <p>No describe el valor ni la capacidad de una persona. Describe <strong>las condiciones que encuentra en una situación concreta</strong>.</p>
+          </div>
+          <div class="door-legend__items">
+            <article class="door-key door-key--open"><span aria-hidden="true">🟢</span><div><strong>Puerta más abierta</strong><p>El personaje encuentra menos obstáculos externos para participar o decidir.</p></div></article>
+            <article class="door-key door-key--context"><span aria-hidden="true">🟡</span><div><strong>Depende del contexto</strong><p>Hay apoyos y barreras que pueden cambiar mucho el resultado.</p></div></article>
+            <article class="door-key door-key--barrier"><span aria-hidden="true">🟣</span><div><strong>Puerta con más barreras</strong><p>La misma posibilidad exige más esfuerzo, apoyo, tiempo o recursos que para otras personas.</p></div></article>
+          </div>
+          <p class="rules-note"><strong>Importante:</strong> una puerta con barreras no significa “no puede”. Y una puerta abierta no significa “lo tiene todo fácil”. Solo observamos qué condiciones pesan en ese momento.</p>
+        </div>
+
+        <div class="button-row">
+          <button id="rulesContinue" class="btn btn--primary" type="button" data-action="rules-continue">Empezar a jugar</button>
+          <button class="btn btn--paper" type="button" data-action="show-about">¿Por qué está diseñado así?</button>
+          <button class="btn btn--ghost" type="button" data-action="rules-back">Volver</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="about" aria-labelledby="about-title">
+      <div class="panel poster-paper">
+        <p class="kicker">Antes de empezar</p>
+        <h2 id="about-title">No es un test.</h2>
+        <div class="manifesto-grid">
+          <article><strong>01</strong><h3>Sin puntuación de privilegio</h3><p>Las dimensiones no suman puntos. Modifican situaciones y muestran barreras.</p></article>
+          <article><strong>02</strong><h3>Personajes ficticios</h3><p>El modo recomendado evita pedir a menores que expongan su vida personal.</p></article>
+          <article><strong>03</strong><h3>Interseccionalidad</h3><p>Dos contextos pueden reforzarse entre sí. El juego muestra esos cruces sin convertirlos en una fórmula.</p></article>
+          <article><strong>04</strong><h3>Termina en acción</h3><p>Ver, acompañar y cambiar: el objetivo es detectar desigualdades y pensar qué podemos hacer.</p></article>
+        </div>
+        <div class="button-row">
+          <button class="btn btn--primary" type="button" data-action="choose-mode">Elegir modo</button>
+          <button class="btn btn--ghost" type="button" data-action="home">Volver</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="mode" aria-labelledby="mode-title">
+      <div class="panel poster-paper">
+        <p class="kicker">Paso 1 de 2</p>
+        <h2 id="mode-title">¿Cómo vais a jugar?</h2>
+        <div class="choice-grid choice-grid--two">
+          <button class="mode-card" type="button" data-mode="individual">
+            <span class="mode-icon" aria-hidden="true">●</span>
+            <span><strong>Modo individual</strong><small>10–15 min · una persona · reflexión autónoma</small></span>
+          </button>
+          <button class="mode-card" type="button" data-mode="workshop">
+            <span class="mode-icon" aria-hidden="true">●●●</span>
+            <span><strong>Modo taller</strong><small>30–60 min · grupo · pausas para hablar y preguntas de facilitación</small></span>
+          </button>
+        </div>
+        <button class="btn btn--ghost" type="button" data-action="home">Volver</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="characters" aria-labelledby="characters-title">
+      <div class="panel panel--wide poster-paper">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Paso 2 de 2</p>
+            <h2 id="characters-title">Elige una realidad</h2>
+            <p class="body-copy">Jugarás con un personaje ficticio. Ninguno representa a un grupo entero: son puntos de partida para conversar.</p>
+          </div>
+          <button class="btn btn--paper btn--small" type="button" data-action="random-character">Elegir al azar</button>
+        </div>
+        <div id="characterGrid" class="character-grid" aria-live="polite"></div>
+        <button class="btn btn--ghost" type="button" data-action="back-mode">Volver</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="wheel" aria-labelledby="wheel-title">
+      <div class="game-topbar">
+        <button class="mini-brand" type="button" data-action="home">RUEDA DEL PODER</button>
+        <div class="game-topbar__right"><button class="help-button" type="button" data-action="show-rules" aria-label="Abrir instrucciones">? Cómo se juega</button><div class="progress-copy"><span id="doorProgress">Puerta 1 de 5</span><span id="modeBadge">Individual</span></div></div>
+      </div>
+      <div class="wheel-layout">
+        <div class="wheel-stage poster-paper">
+          <p class="kicker">Gira la rueda</p>
+          <h2 id="wheel-title">¿Qué dimensión aparece?</h2>
+          <div id="gameWheel" class="power-wheel power-wheel--game" aria-hidden="true"><div class="wheel-core">GIRA</div></div>
+          <button id="spinButton" class="btn btn--primary btn--big" type="button" data-action="spin">Girar la rueda</button>
+          <p id="wheelHint" class="microcopy">La rueda elegirá una dimensión que todavía no hayas recorrido.</p>
+        </div>
+        <aside class="player-strip poster-paper poster-paper--tilt-right" aria-label="Personaje actual">
+          <div id="playerAvatar" class="avatar avatar--large"></div>
+          <p class="kicker">Juegas como</p>
+          <h3 id="playerName"></h3>
+          <p id="playerSummary"></p>
+          <button class="text-button" type="button" data-action="change-character">Cambiar de personaje</button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="door" aria-labelledby="door-title">
+      <div class="game-topbar">
+        <button class="mini-brand" type="button" data-action="home">RUEDA DEL PODER</button>
+        <div class="game-topbar__right"><button class="help-button" type="button" data-action="show-rules" aria-label="Abrir instrucciones">? Cómo se juega</button><div class="progress-copy"><span id="doorProgress2">Puerta 1 de 5</span><span id="dimensionBadge"></span></div></div>
+      </div>
+      <div class="door-layout">
+        <article class="door-card poster-paper">
+          <div class="door-visual" aria-hidden="true"><span id="doorIcon">🚪</span></div>
+          <div>
+            <p id="doorDimension" class="kicker"></p>
+            <h2 id="door-title"></h2>
+            <p id="doorScenario" class="lead lead--small"></p>
+            <p class="condition-intro"><strong>¿Qué significa esta puerta?</strong> Mira las condiciones que encuentra este personaje en esta situación.</p>
+            <div id="conditionBox" class="condition-box"></div>
+          </div>
+        </article>
+        <section class="decision-card poster-paper" aria-labelledby="decision-title">
+          <p class="kicker">Tu decisión</p>
+          <h3 id="decision-title">¿Qué harías?</h3>
+          <p id="decisionPrompt" class="decision-prompt"></p>
+          <div id="choiceList" class="choice-list"></div>
+          <div id="decisionFeedback" class="feedback" hidden></div>
+          <button id="continueDoor" class="btn btn--primary" type="button" data-action="continue-door" hidden>Continuar</button>
+        </section>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="pause" aria-labelledby="pause-title">
+      <div class="pause-card poster-paper">
+        <div class="pause-sign">PAUSA<br />PARA<br />HABLAR</div>
+        <div>
+          <p class="kicker">Modo taller</p>
+          <h2 id="pause-title">¿Qué está pasando aquí?</h2>
+          <p id="pauseQuestion" class="lead"></p>
+          <p class="facilitator-note"><strong>Para quien facilita:</strong> deja espacio para distintas lecturas. No pidas a nadie que explique experiencias personales para “demostrar” un punto.</p>
+          <button class="btn btn--primary" type="button" data-action="resume-from-pause">Seguir jugando</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="cross" aria-labelledby="cross-title">
+      <div class="cross-card poster-paper">
+        <div class="cross-burst" aria-hidden="true">⚡</div>
+        <p class="kicker">Cruce de ruedas</p>
+        <h2 id="cross-title">Las desigualdades pueden reforzarse.</h2>
+        <div class="cross-tags"><span id="crossA"></span><b>+</b><span id="crossB"></span></div>
+        <p id="crossText" class="lead"></p>
+        <p class="body-copy">No significa “dos problemas = el doble de puntos”. Significa que una barrera puede cambiar cómo se vive otra.</p>
+        <button class="btn btn--primary" type="button" data-action="continue-cross">Ver otra puerta</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="switch" aria-labelledby="switch-title">
+      <div class="panel panel--wide poster-paper">
+        <p class="kicker">Cambia de rueda</p>
+        <h2 id="switch-title">La misma puerta. Otro punto de partida.</h2>
+        <p class="body-copy">Elige otro personaje para comparar una de las situaciones que ya has vivido.</p>
+        <div id="switchCharacterGrid" class="character-grid character-grid--compact"></div>
+        <div id="comparisonBox" class="comparison-box" hidden></div>
+        <button id="finishSwitch" class="btn btn--primary" type="button" data-action="finish-switch" hidden>Descubrir mi mapa</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="map" aria-labelledby="map-title">
+      <div class="panel panel--wide poster-paper">
+        <p class="kicker">Tu mapa de poder</p>
+        <h2 id="map-title">Patrones, no etiquetas.</h2>
+        <p class="body-copy">Este mapa resume las puertas que aparecieron para el personaje. No mide quién es “más” o “menos” privilegiado.</p>
+        <div class="map-grid">
+          <section class="map-column map-column--open"><h3>🟢 Suelen estar abiertas</h3><div id="mapOpen"></div></section>
+          <section class="map-column map-column--context"><h3>🟡 Dependen del contexto</h3><div id="mapContext"></div></section>
+          <section class="map-column map-column--barrier"><h3>🟣 Requieren más esfuerzo</h3><div id="mapBarrier"></div></section>
+        </div>
+        <div id="crossSummary" class="cross-summary"></div>
+        <button class="btn btn--primary" type="button" data-action="go-action">Ahora que lo ves…</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="action" aria-labelledby="action-title">
+      <div class="panel panel--wide poster-paper">
+        <p class="kicker">La rueda vuelve a girar</p>
+        <h2 id="action-title">¿Qué haces con tu poder?</h2>
+        <p class="lead">El poder no solo consiste en lo que tienes. También en lo que puedes hacer con ello.</p>
+        <div id="actionPaths" class="action-paths">
+          <button class="action-path" type="button" data-path="ver"><span>👁️</span><strong>VER</strong><small>Detectar una desigualdad que antes pasaba desapercibida.</small></button>
+          <button class="action-path" type="button" data-path="acompanar"><span>🤝</span><strong>ACOMPAÑAR</strong><small>Usar tu posición para que otras personas tengan más oportunidades.</small></button>
+          <button class="action-path" type="button" data-path="cambiar"><span>✊</span><strong>CAMBIAR</strong><small>Revisar una regla, hábito o espacio que deja a alguien fuera.</small></button>
+        </div>
+        <div id="challengeCard" class="challenge-card" hidden></div>
+        <div class="button-row">
+          <button id="restartButton" class="btn btn--primary" type="button" data-action="restart" hidden>Jugar con otra realidad</button>
+          <button id="printButton" class="btn btn--paper" type="button" data-action="print" hidden>Imprimir / guardar mapa</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Prototipo educativo · Fundación Agua de Coco · sin analítica ni almacenamiento local</p>
+  </footer>
+
+  <script>
+/*
+  CONTENIDO CONFIGURABLE
+  ----------------------
+  Este archivo concentra personajes, dimensiones, situaciones y retos.
+  Puede editarse sin tocar la lógica del juego.
+*/
+
+window.RUEDA_CONTENT = {
+  dimensions: [
+    { id: "resources", name: "Dinero", icon: "💰", question: "¿Con qué recursos cuento?" },
+    { id: "place", name: "Lugar", icon: "🏠", question: "¿Dónde me ha tocado vivir?" },
+    { id: "origin", name: "Origen", icon: "🌍", question: "¿Cómo se percibe mi origen?" },
+    { id: "language", name: "Lengua", icon: "🗣️", question: "¿Mi forma de hablar encaja?" },
+    { id: "age", name: "Edad", icon: "🧑", question: "¿Cuánto se escucha mi voz?" },
+    { id: "identity", name: "Identidad", icon: "⚧", question: "¿Cómo se percibe mi género?" },
+    { id: "affectivity", name: "Afectividad", icon: "❤️", question: "¿Puedo mostrar quién quiero ser?" },
+    { id: "ability", name: "Capacidad", icon: "♿", question: "¿Está el mundo diseñado para mí?" },
+    { id: "family", name: "Familia", icon: "👨‍👩‍👧", question: "¿Qué red tengo detrás?" },
+    { id: "rights", name: "Derechos", icon: "🪪", question: "¿Tengo el mismo reconocimiento?" }
+  ],
+
+  characters: [
+    {
+      id: "leire",
+      name: "Leire",
+      age: 15,
+      avatar: "L",
+      intro: "Vive en una ciudad mediana, tiene una red familiar estable y practica baloncesto.",
+      detail: "En casa pueden afrontar gastos imprevistos pequeños. Habla las lenguas habituales de su entorno y suele moverse sola por la ciudad.",
+      access: {
+        resources: ["open", "En casa pueden cubrir la mayoría de gastos cotidianos y algunos imprevistos."],
+        place: ["open", "Tiene transporte y servicios cerca."],
+        origin: ["open", "Su origen suele percibirse como mayoritario en su entorno."],
+        language: ["open", "Domina las lenguas que se usan en el instituto y en los trámites."],
+        age: ["context", "Su opinión cuenta en algunos espacios, aunque las decisiones importantes siguen en manos adultas."],
+        identity: ["context", "En el deporte a veces encuentra expectativas distintas por ser chica."],
+        affectivity: ["open", "No suele prever consecuencias por hablar de a quién le gusta."],
+        ability: ["open", "Los espacios que frecuenta suelen estar diseñados para sus necesidades."],
+        family: ["open", "Tiene personas adultas disponibles para acompañarla y defender sus derechos."],
+        rights: ["open", "Tiene documentación y acceso habitual a los servicios de su entorno."]
+      }
+    },
+    {
+      id: "amadou",
+      name: "Amadou",
+      age: 16,
+      avatar: "A",
+      intro: "Llegó hace dos años con parte de su familia. Le gusta la música y quiere buscar un trabajo de verano.",
+      detail: "Habla varias lenguas. Entiende bien la lengua del instituto, pero todavía duda en situaciones formales y algunos trámites dependen de personas adultas.",
+      access: {
+        resources: ["context", "En casa hay que planificar con cuidado los gastos no esenciales."],
+        place: ["open", "Vive cerca de transporte y servicios."],
+        origin: ["barrier", "A veces otras personas hacen suposiciones sobre él por su nombre o su origen."],
+        language: ["context", "Se comunica bien, pero algunas situaciones formales requieren más esfuerzo."],
+        age: ["context", "Como adolescente, su voz no siempre se considera suficiente en trámites o decisiones."],
+        identity: ["open", "No suele encontrar barreras explícitas por cómo se percibe su género."],
+        affectivity: ["open", "No es una fuente habitual de barreras en los escenarios del juego."],
+        ability: ["open", "Los espacios habituales responden a sus necesidades físicas y sensoriales."],
+        family: ["context", "Tiene apoyo familiar, aunque no siempre hay una persona adulta disponible para acompañar gestiones."],
+        rights: ["barrier", "Algunas oportunidades están condicionadas por documentación, plazos o trámites que no controla él solo."]
+      }
+    },
+    {
+      id: "june",
+      name: "June",
+      age: 14,
+      avatar: "J",
+      intro: "Vive en un pueblo pequeño, le encanta dibujar y participa en un grupo juvenil una vez por semana.",
+      detail: "Para llegar a muchas actividades depende de horarios de autobús o de que alguien pueda llevarla. Es neurodivergente y los ambientes muy ruidosos pueden saturarla.",
+      access: {
+        resources: ["open", "Su familia puede asumir la mayoría de gastos ordinarios."],
+        place: ["barrier", "Tiene menos transporte y menos servicios cerca que alguien que vive en el centro de una ciudad."],
+        origin: ["open", "Su origen no suele convertirse en una barrera en su entorno."],
+        language: ["open", "Habla las lenguas habituales de su entorno."],
+        age: ["context", "Necesita apoyo adulto para desplazamientos y algunas decisiones."],
+        identity: ["open", "No suele encontrar barreras explícitas por cómo se percibe su género."],
+        affectivity: ["open", "No es una fuente habitual de barreras en los escenarios del juego."],
+        ability: ["context", "El ruido, las instrucciones ambiguas o los cambios inesperados pueden volver inaccesible una actividad."],
+        family: ["open", "Tiene una red familiar disponible, aunque coordinar desplazamientos no siempre es fácil."],
+        rights: ["open", "Tiene acceso habitual a servicios y documentación."]
+      }
+    },
+    {
+      id: "alex",
+      name: "Alex",
+      age: 17,
+      avatar: "X",
+      intro: "Está terminando el instituto, toca la guitarra y se identifica como persona no binaria.",
+      detail: "Cuenta con amistades que respetan su identidad, pero no todos los espacios usan su nombre y pronombres de forma consistente.",
+      access: {
+        resources: ["open", "Tiene recursos suficientes para actividades habituales."],
+        place: ["open", "Vive cerca de servicios y puede desplazarse con autonomía."],
+        origin: ["open", "Su origen no suele convertirse en una barrera en su entorno."],
+        language: ["open", "Domina las lenguas habituales de su entorno."],
+        age: ["context", "Tiene bastante autonomía, pero algunas decisiones siguen dependiendo de personas adultas."],
+        identity: ["barrier", "En ciertos espacios su identidad se cuestiona, se ignora o se convierte en motivo de comentarios."],
+        affectivity: ["context", "Valora antes si un espacio es seguro para hablar de vínculos o afectos."],
+        ability: ["open", "Los espacios habituales responden a sus necesidades físicas y sensoriales."],
+        family: ["context", "Tiene apoyo de parte de su red, pero no todas las personas adultas entienden igual su identidad."],
+        rights: ["context", "Algunos formularios, normas o registros no contemplan bien su identidad."]
+      }
+    },
+    {
+      id: "samira",
+      name: "Samira",
+      age: 13,
+      avatar: "S",
+      intro: "Vive con su madre y dos hermanos. Le gusta bailar y a veces ayuda a cuidar al más pequeño.",
+      detail: "En casa se hablan dos lenguas y el presupuesto es ajustado. Tiene amigas cerca, pero no siempre puede quedarse a actividades de tarde.",
+      access: {
+        resources: ["barrier", "Una actividad con coste puede exigir renunciar a otra necesidad familiar."],
+        place: ["context", "Tiene servicios cerca, aunque algunos desplazamientos de tarde son difíciles."],
+        origin: ["context", "En ocasiones recibe preguntas o comentarios que la hacen sentirse observada por su origen familiar."],
+        language: ["open", "Habla con soltura las lenguas de su entorno y además otra lengua familiar."],
+        age: ["context", "Su edad limita autonomía y hace que algunas personas adultas decidan sin preguntarle."],
+        identity: ["context", "A veces recibe expectativas distintas sobre cómo debería vestir o comportarse."],
+        affectivity: ["open", "No es una fuente habitual de barreras en los escenarios del juego."],
+        ability: ["open", "Los espacios habituales responden a sus necesidades físicas y sensoriales."],
+        family: ["barrier", "Las responsabilidades de cuidado pueden impedirle participar aunque quiera hacerlo."],
+        rights: ["open", "Tiene acceso habitual a servicios y documentación."]
+      }
+    },
+    {
+      id: "iker",
+      name: "Iker",
+      age: 16,
+      avatar: "I",
+      intro: "Usa silla de ruedas, es fan de los videojuegos y participa en el consejo escolar.",
+      detail: "Tiene una familia con recursos y apoyo. El principal problema aparece cuando un lugar, transporte o actividad se ha diseñado sin accesibilidad.",
+      access: {
+        resources: ["open", "Su familia puede asumir gastos habituales y apoyos técnicos."],
+        place: ["context", "La accesibilidad del transporte y de los edificios cambia mucho según el lugar."],
+        origin: ["open", "Su origen no suele convertirse en una barrera en su entorno."],
+        language: ["open", "Domina las lenguas habituales de su entorno."],
+        age: ["context", "Su voz se escucha en algunos espacios, aunque muchas decisiones siguen siendo adultocéntricas."],
+        identity: ["open", "No suele encontrar barreras explícitas por cómo se percibe su género."],
+        affectivity: ["open", "No es una fuente habitual de barreras en los escenarios del juego."],
+        ability: ["barrier", "Una actividad deja de ser accesible si hay escaleras, transporte no adaptado o falta de apoyos."],
+        family: ["open", "Tiene una red familiar disponible para apoyar gestiones y desplazamientos."],
+        rights: ["context", "Sobre el papel tiene los mismos derechos, pero ejercerlos puede depender de que se cumplan medidas de accesibilidad."]
+      }
+    }
+  ],
+
+  scenarios: {
+    resources: {
+      title: "Plan de fin de semana",
+      text: "Tu grupo quiere hacer una excursión que cuesta 38 € entre transporte, comida y entrada.",
+      workshop: "¿Poder pagar es una decisión personal o una condición de partida? ¿Qué podría hacer el grupo para que nadie quede fuera?",
+      system: "El grupo puede revisar el precio, ofrecer una alternativa equivalente o crear apoyos sin obligar a nadie a explicar su situación económica.",
+      choices: [
+        ["mirar", "Antes de decidir, miro si el coste encaja con mis posibilidades y, si no, lo digo sin tener que justificar mi situación.", "Reconocer el límite propio permite pedir cambios o apoyos sin convertir la situación económica en algo que haya que demostrar."],
+        ["alternativa", "Pregunto si podemos buscar una opción gratuita o más barata para que el precio no decida quién participa.", "El personaje usa su voz para señalar una barrera concreta y proponer una alternativa que beneficia al grupo."],
+        ["seguir", "Acepto el plan tal como está y no pregunto si el precio puede dejar a alguien fuera.", "Es una reacción posible, especialmente si el coste no te afecta. También muestra cómo una barrera puede pasar desapercibida para quien no la vive."]
+      ]
+    },
+    place: {
+      title: "Llegar también cuenta",
+      text: "Hay un taller interesante a las 18:30, pero termina cuando ya casi no hay transporte público.",
+      workshop: "Cuando una actividad es ‘para todo el mundo’, ¿incluye también la posibilidad real de llegar y volver?",
+      system: "Quien organiza puede cambiar el horario, elegir un lugar mejor conectado o prever opciones de vuelta seguras antes de anunciar la actividad.",
+      choices: [
+        ["comprobar", "Antes de apuntarme, compruebo cómo podría volver a casa y digo si el horario me deja sin opciones.", "El personaje hace visible una condición que a veces se trata como un problema privado, aunque dependa del diseño de la actividad."],
+        ["renunciar", "Si el horario me complica la vuelta, decido no ir y no comento el motivo.", "Puede ser una forma de evitar una situación difícil, pero la barrera queda invisible y puede repetirse en la siguiente actividad."],
+        ["pedir-cambio", "Pregunto si podemos adelantar la hora o buscar una forma segura de volver para poder participar.", "Pedir un ajuste conecta la necesidad del personaje con una solución concreta sin convertirla en falta de interés."]
+      ]
+    },
+    origin: {
+      title: "Un nombre en el currículum",
+      text: "Envías una solicitud para un trabajo de verano. Una persona comenta que tu nombre ‘suena extranjero’ y pregunta de dónde eres ‘de verdad’.",
+      workshop: "¿Qué parte de esta situación tiene que ver con capacidades reales y qué parte con prejuicios?",
+      system: "La selección debería centrarse en criterios del puesto y evitar preguntas o filtros que conviertan el origen percibido en una desventaja.",
+      choices: [
+        ["broma", "Me río para que no parezca que me molesta.", "A veces reír es una estrategia para salir del momento, pero no convierte el comentario en neutral."],
+        ["limite", "Señalo que mi origen no debería decidir si encajo en el puesto y vuelvo a hablar de mis capacidades.", "El personaje nombra la barrera y devuelve la conversación a los criterios relevantes para el trabajo."],
+        ["justificar", "Intento demostrar que soy ‘como cualquiera’ para tranquilizar a quien ha hecho el comentario.", "Esta reacción puede ayudar a salir del momento, pero obliga a la persona afectada a responder a un prejuicio que no ha creado."]
+      ]
+    },
+    language: {
+      title: "Hablar delante de la clase",
+      text: "Tienes que presentar un proyecto oral. La clase usa una lengua que algunas personas dominan con más seguridad que otras.",
+      workshop: "¿Evaluar la forma de hablar es siempre lo mismo que evaluar lo que una persona sabe?",
+      system: "El centro puede ofrecer apoyos, criterios de evaluación claros y distintas formas de demostrar conocimientos sin confundir dominio lingüístico con capacidad.",
+      choices: [
+        ["apoyo", "Si expresarme me exige más esfuerzo, pido usar apoyos visuales y preparar algunas palabras clave.", "El personaje busca una herramienta concreta para mostrar lo que sabe sin ocultar que la lengua puede añadir dificultad."],
+        ["silencio", "Si temo equivocarme, intento hablar lo mínimo posible para que nadie note mis errores.", "Reduce el riesgo de exposición, pero también puede limitar oportunidades de practicar y ser escuchado."],
+        ["preparar", "Pido más tiempo para preparar la presentación o practicar antes con una persona de confianza.", "Buscar preparación y apoyo puede reducir la presión sin convertir la dificultad lingüística en falta de conocimiento."]
+      ]
+    },
+    age: {
+      title: "Decidir sin jóvenes",
+      text: "El centro va a cambiar una norma que afecta directamente al alumnado. La reunión final solo incluye a personas adultas.",
+      workshop: "¿A partir de qué momento una voz se considera ‘suficientemente adulta’ para participar en decisiones que le afectan?",
+      system: "El centro puede crear mecanismos reales de participación juvenil antes de tomar decisiones que afectan directamente al alumnado.",
+      choices: [
+        ["representacion", "Pido que el alumnado tenga una representación real antes de que se tome la decisión.", "El personaje reclama una vía concreta para que su experiencia cuente sin asumir que debe decidirlo todo."],
+        ["aceptar", "Acepto la decisión sin pedir participar porque pienso que las personas adultas sabrán qué es lo mejor.", "La experiencia adulta puede aportar, pero no sustituye automáticamente la experiencia de quienes viven la norma."],
+        ["rumor", "Expreso mi desacuerdo en redes, pero no busco ningún canal para hacer llegar mi opinión al centro.", "Expresa malestar, aunque deja la decisión en el mismo lugar si no se conecta con una vía de participación."]
+      ]
+    },
+    identity: {
+      title: "Entrar al equipo",
+      text: "Quieres apuntarte a una actividad deportiva. Alguien hace un comentario sobre qué personas ‘pegan’ más con ese equipo.",
+      workshop: "¿Qué reglas son realmente necesarias para el deporte y cuáles son expectativas sociales sobre género?",
+      system: "El club o el centro puede revisar criterios de acceso, lenguaje y normas para que los estereotipos de género no funcionen como filtros informales.",
+      choices: [
+        ["reglas", "Pregunto qué criterio deportivo concreto justifica el comentario o una posible exclusión.", "El personaje obliga a distinguir entre una necesidad real de la actividad y una expectativa social."],
+        ["retirada", "Decido irme para evitar más comentarios.", "Salir puede ser una forma de protegerse, pero también muestra cómo el entorno puede cerrar una puerta sin una prohibición formal."],
+        ["apoyo", "Busco a una persona responsable del equipo y le explico lo que ha pasado antes de decidir si sigo.", "Pedir apoyo traslada parte de la responsabilidad a quien tiene capacidad para intervenir en el espacio."]
+      ]
+    },
+    affectivity: {
+      title: "Contar a quién quieres",
+      text: "En una conversación, el grupo habla de parejas. No sabes si mencionar a la persona que te gusta cambiará cómo te tratan.",
+      workshop: "¿Qué señales hacen que un espacio se sienta seguro o inseguro para hablar de la propia vida afectiva?",
+      system: "Un grupo seguro no obliga a nadie a revelar su vida afectiva y corta burlas, rumores o comentarios que convierten una identidad en motivo de presión.",
+      choices: [
+        ["elegir", "Decido yo cuándo y con quién compartir a quién me gusta.", "La privacidad y el ritmo propio forman parte de poder vivir los afectos con seguridad."],
+        ["presion", "Lo cuento aunque no me sienta con seguridad porque creo que debería demostrar que no me da miedo.", "Nadie tiene que exponerse para demostrar valentía o para educar al resto."],
+        ["confianza", "Primero se lo cuento a una persona de confianza y observo cómo se siente el ambiente antes de decidir si lo comparto con más gente.", "El personaje usa su red y evalúa el contexto antes de exponerse, algo que puede ser una estrategia legítima de cuidado." ]
+      ]
+    },
+    ability: {
+      title: "La actividad está arriba",
+      text: "La clase organiza una actividad en un edificio con escaleras y no está claro si existe una alternativa de acceso adecuada.",
+      workshop: "¿La barrera está en el cuerpo de una persona o en un espacio que se diseñó sin contar con ella?",
+      system: "La actividad debería planificarse desde el inicio en un espacio accesible, en vez de esperar a que una persona tenga que pedir una solución excepcional.",
+      choices: [
+        ["comprobar", "Antes de la actividad, compruebo si puedo entrar, moverme y participar con autonomía; si no, lo digo.", "El personaje identifica si el espacio responde realmente a sus necesidades en lugar de asumir que ‘ya se verá’ al llegar."],
+        ["improvisar", "Si encuentro una barrera, acepto una solución improvisada aunque me haga depender de otras personas.", "A veces parece la salida más rápida, pero puede ser insegura o reducir la autonomía de quien participa."],
+        ["cambiar", "Si el lugar no me permite participar, pido que la actividad se haga en otro espacio accesible.", "El personaje plantea que la accesibilidad sea una condición del plan y no un favor individual." ]
+      ]
+    },
+    family: {
+      title: "Quedarse después de clase",
+      text: "Hay una reunión importante por la tarde. Ese horario puede coincidir con responsabilidades o necesidades familiares.",
+      workshop: "¿Por qué dos personas con las mismas ganas pueden tener disponibilidades muy distintas?",
+      system: "El grupo puede rotar horarios, permitir participación a distancia o recoger opiniones antes de decidir para que estar físicamente presente no sea la única forma de participar.",
+      choices: [
+        ["horario", "Compruebo si ese horario encaja con mis responsabilidades y, si no, pido otra forma de participar.", "El personaje hace visible que la disponibilidad no siempre depende de las ganas o del compromiso."],
+        ["quedar-fuera", "Si no puedo ir, dejo que decidan sin mí y no explico que el horario es el problema.", "Puede evitar tener que contar una situación personal, pero la barrera queda invisible y la ausencia puede interpretarse como falta de interés."],
+        ["opinion", "Pido a alguien que lleve mi opinión a la reunión y que me cuente después qué se decidió.", "No elimina la barrera, pero permite conservar parte de la voz cuando la presencia física no es posible." ]
+      ]
+    },
+    rights: {
+      title: "La beca del programa de verano",
+      text: "En tu instituto anuncian una beca para participar una semana en un programa de verano. Para solicitarla hay que rellenar un formulario online, adjuntar un documento familiar, conseguir la firma de una persona adulta y enviarlo antes del viernes.",
+      workshop: "¿Todo el mundo tiene las mismas posibilidades de pedir la beca si algunas personas necesitan ayuda para entender el formulario, reunir los documentos o cumplir el plazo?",
+      system: "El centro puede explicar la solicitud paso a paso, ofrecer apoyo para completarla y revisar si todos los requisitos y plazos son realmente imprescindibles.",
+      choices: [
+        ["pedir-ayuda", "Leo la convocatoria y, si algo no lo entiendo o no puedo reunirlo por mi cuenta, pido que me lo expliquen paso a paso.", "El personaje busca información y apoyo para poder ejercer una oportunidad que existe sobre el papel."],
+        ["abandonar", "Si me falta un documento o una firma, abandono la solicitud sin preguntar si existe otra opción.", "Puede parecer que la beca simplemente ‘no era para mí’, aunque el obstáculo venga del procedimiento y no del interés del personaje."],
+        ["alternativa", "Pregunto si existe una alternativa cuando un requisito o el plazo me resulta imposible de cumplir.", "El personaje hace visible una barrera concreta y comprueba si el procedimiento admite una solución equivalente." ]
+      ]
+    }
+  },
+
+  intersections: [
+    { ids: ["resources", "place"], text: "Un coste pequeño puede convertirse en una barrera mayor cuando además hay poco transporte o servicios lejos." },
+    { ids: ["origin", "language"], text: "Un error lingüístico puede interpretarse de forma distinta cuando ya existen prejuicios sobre el origen de una persona." },
+    { ids: ["identity", "age"], text: "Ser joven puede hacer más difícil que se tome en serio una identidad que otras personas ya cuestionan." },
+    { ids: ["ability", "place"], text: "La accesibilidad no depende solo del cuerpo: cambia según el edificio, el transporte y el entorno." },
+    { ids: ["family", "resources"], text: "Los cuidados y el dinero pueden cruzarse: pagar apoyo o transporte puede ser imposible cuando el presupuesto ya es ajustado." },
+    { ids: ["rights", "language"], text: "Solicitar una beca puede ser mucho más difícil si el formulario, las instrucciones o los documentos necesarios no están explicados en una lengua que la persona o su familia comprendan bien." }
+  ],
+
+  challenges: {
+    ver: [
+      "Durante un día, detecta una situación que parece igual para todo el mundo y pregúntate: ¿qué necesita una persona para poder participar de verdad?",
+      "Observa una actividad de tu centro o grupo. Anota una barrera que normalmente no se nombra: coste, horario, transporte, idioma, accesibilidad o cuidados.",
+      "Escucha una conversación y detecta una frase que convierta una desigualdad en ‘falta de esfuerzo’. Piensa qué contexto falta por mirar."
+    ],
+    acompanhar: [
+      "La próxima vez que una decisión afecte a alguien que no está presente, propone recoger su opinión antes de cerrar el plan.",
+      "Si una persona recibe una broma por su origen, identidad, acento o capacidad, no la dejes sola con el coste de responder.",
+      "Pregunta qué apoyo sería útil antes de ofrecer ayuda. Acompañar no es decidir por otra persona."
+    ],
+    cambiar: [
+      "Elige una norma de tu instituto, grupo o actividad que pueda dejar a alguien fuera. Rediseña una versión con menos barreras.",
+      "Revisa una actividad: ¿se puede cambiar el precio, horario, lugar o forma de participar para que dependa menos de los recursos personales?",
+      "Haz una propuesta concreta para que las personas jóvenes tengan una vía real de participación en una decisión que les afecta."
+    ]
+  }
+};
+
+  </script>
+  <script>
+(() => {
+  "use strict";
+
+  const CONTENT = window.RUEDA_CONTENT;
+  const TOTAL_DOORS = 5;
+
+  const state = {
+    mode: "individual",
+    characterId: null,
+    visited: [],
+    results: [],
+    currentDimension: null,
+    currentChoice: null,
+    crossShown: false,
+    switchCompared: false,
+    rulesSeen: false,
+    returnScreen: "home"
+  };
+
+  const screens = [...document.querySelectorAll("[data-screen]")];
+  const characterGrid = document.querySelector("#characterGrid");
+  const switchCharacterGrid = document.querySelector("#switchCharacterGrid");
+  const wheel = document.querySelector("#gameWheel");
+  const spinButton = document.querySelector("#spinButton");
+
+  function $(selector) { return document.querySelector(selector); }
+  function byId(id) { return CONTENT.characters.find((item) => item.id === id); }
+  function dimensionById(id) { return CONTENT.dimensions.find((item) => item.id === id); }
+  function scenarioById(id) { return CONTENT.scenarios[id]; }
+
+  function currentScreenName() {
+    return document.querySelector("[data-screen].is-active")?.dataset.screen || "home";
+  }
+
+  function showScreen(name) {
+    screens.forEach((screen) => screen.classList.toggle("is-active", screen.dataset.screen === name));
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+    requestAnimationFrame(() => {
+      const active = document.querySelector(`[data-screen="${name}"]`);
+      active?.focus?.({ preventScroll: true });
+    });
+  }
+
+  function prefersReducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function resetState({ keepMode = false } = {}) {
+    state.mode = keepMode ? state.mode : "individual";
+    state.characterId = null;
+    state.visited = [];
+    state.results = [];
+    state.currentDimension = null;
+    state.currentChoice = null;
+    state.crossShown = false;
+    state.switchCompared = false;
+    state.rulesSeen = false;
+    state.returnScreen = "home";
+  }
+
+  function renderCharacters(target, compact = false) {
+    target.innerHTML = "";
+    CONTENT.characters.forEach((character, index) => {
+      if (target === switchCharacterGrid && character.id === state.characterId) return;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `character-card${compact ? " character-card--compact" : ""}`;
+      button.dataset.character = character.id;
+      button.innerHTML = `
+        <span class="avatar avatar--${(index % 4) + 1}">${character.avatar}</span>
+        <span class="character-copy">
+          <strong>${character.name}, ${character.age}</strong>
+          <small>${character.intro}</small>
+        </span>
+        <span class="card-arrow" aria-hidden="true">↗</span>`;
+      target.append(button);
+    });
+  }
+
+  function chooseCharacter(id) {
+    state.characterId = id;
+    state.visited = [];
+    state.results = [];
+    state.currentDimension = null;
+    state.crossShown = false;
+    updatePlayerUI();
+    buildWheelLabels();
+    if (!state.rulesSeen) {
+      state.returnScreen = "wheel";
+      showScreen("rules");
+    } else {
+      showScreen("wheel");
+    }
+  }
+
+  function updatePlayerUI() {
+    const character = byId(state.characterId);
+    if (!character) return;
+    $("#playerAvatar").textContent = character.avatar;
+    $("#playerName").textContent = `${character.name}, ${character.age}`;
+    $("#playerSummary").textContent = character.intro;
+    $("#modeBadge").textContent = state.mode === "workshop" ? "Modo taller" : "Individual";
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const next = Math.min(state.results.length + 1, TOTAL_DOORS);
+    $("#doorProgress").textContent = `Puerta ${next} de ${TOTAL_DOORS}`;
+    $("#doorProgress2").textContent = `Puerta ${next} de ${TOTAL_DOORS}`;
+  }
+
+  function buildWheelLabels() {
+    if (wheel.dataset.ready === "true") return;
+    CONTENT.dimensions.forEach((dimension, index) => {
+      const chip = document.createElement("span");
+      chip.className = "wheel-chip";
+      chip.style.setProperty("--i", index);
+      chip.textContent = dimension.icon;
+      chip.title = dimension.name;
+      wheel.append(chip);
+    });
+    wheel.dataset.ready = "true";
+  }
+
+  function spinWheel() {
+    if (spinButton.disabled) return;
+    const remaining = CONTENT.dimensions.map((item) => item.id).filter((id) => !state.visited.includes(id));
+    if (!remaining.length) return;
+
+    spinButton.disabled = true;
+    $("#wheelHint").textContent = "La rueda está girando…";
+    const chosen = remaining[Math.floor(Math.random() * remaining.length)];
+    state.currentDimension = chosen;
+
+    const degrees = 720 + Math.floor(Math.random() * 360);
+    wheel.style.setProperty("--spin", `${degrees}deg`);
+    wheel.classList.remove("is-spinning");
+    void wheel.offsetWidth;
+    wheel.classList.add("is-spinning");
+
+    const delay = prefersReducedMotion() ? 150 : 1050;
+    window.setTimeout(() => {
+      const dim = dimensionById(chosen);
+      $("#wheelHint").textContent = `${dim.icon} ${dim.name}: ${dim.question}`;
+      window.setTimeout(() => {
+        spinButton.disabled = false;
+        openDoor(chosen);
+      }, prefersReducedMotion() ? 50 : 550);
+    }, delay);
+  }
+
+  function openDoor(dimensionId) {
+    const character = byId(state.characterId);
+    const dimension = dimensionById(dimensionId);
+    const scenario = scenarioById(dimensionId);
+    const [status, note] = character.access[dimensionId];
+
+    $("#dimensionBadge").textContent = `${dimension.icon} ${dimension.name}`;
+    $("#doorDimension").textContent = `${dimension.icon} ${dimension.name} · ${dimension.question}`;
+    $("#door-title").textContent = scenario.title;
+    $("#doorScenario").textContent = scenario.text;
+    $("#doorIcon").textContent = status === "open" ? "🟢" : status === "context" ? "🟡" : "🟣";
+
+    const condition = $("#conditionBox");
+    condition.className = `condition-box condition-box--${status}`;
+    const meanings = {
+      open: "En esta situación, el personaje encuentra menos obstáculos externos.",
+      context: "En esta situación, los apoyos y las barreras del entorno pueden cambiar mucho lo que ocurre.",
+      barrier: "En esta situación, llegar a la misma posibilidad puede exigir más esfuerzo, apoyo, tiempo o recursos."
+    };
+    condition.innerHTML = `<strong>${statusLabel(status)}</strong><p class="condition-meaning">${meanings[status]}</p><p>${note}</p>`;
+
+    $("#decision-title").textContent = `Estás jugando como ${character.name}. ¿Qué decides hacer?`;
+    $("#decisionPrompt").textContent = `Elige una acción que ${character.name} podría tomar desde su situación. No estás decidiendo por el centro, la familia o el grupo: esa parte aparecerá después como reflexión sobre el entorno.`;
+
+    const list = $("#choiceList");
+    list.innerHTML = "";
+    scenario.choices.forEach(([choiceId, label, feedback], index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "decision-option";
+      button.dataset.choice = choiceId;
+      button.dataset.feedback = feedback;
+      button.innerHTML = `<span>${String.fromCharCode(65 + index)}</span><strong>${label}</strong>`;
+      list.append(button);
+    });
+
+    $("#decisionFeedback").hidden = true;
+    $("#continueDoor").hidden = true;
+    state.currentChoice = null;
+    showScreen("door");
+  }
+
+  function statusLabel(status) {
+    return status === "open" ? "Puerta más abierta" : status === "context" ? "Depende del contexto" : "Puerta con más barreras";
+  }
+
+  function chooseDecision(button) {
+    if (state.currentChoice) return;
+    state.currentChoice = button.dataset.choice;
+    [...document.querySelectorAll(".decision-option")].forEach((item) => {
+      item.disabled = true;
+      item.classList.toggle("is-selected", item === button);
+    });
+    const feedback = $("#decisionFeedback");
+    const character = byId(state.characterId);
+    const scenario = scenarioById(state.currentDimension);
+    feedback.innerHTML = `<strong>LO QUE HACE ${character.name.toUpperCase()}</strong><p>${button.dataset.feedback}</p><div class="feedback-system"><strong>Y EL ENTORNO TAMBIÉN CUENTA</strong><p>${scenario.system}</p></div>`;
+    feedback.hidden = false;
+    $("#continueDoor").hidden = false;
+  }
+
+  function commitDoor() {
+    const id = state.currentDimension;
+    const character = byId(state.characterId);
+    const scenario = scenarioById(id);
+    const [status, note] = character.access[id];
+
+    if (!state.visited.includes(id)) state.visited.push(id);
+    if (!state.results.some((result) => result.dimensionId === id)) {
+      state.results.push({ dimensionId: id, status, note, choice: state.currentChoice });
+    }
+    updateProgress();
+
+    if (state.mode === "workshop") {
+      $("#pauseQuestion").textContent = scenario.workshop;
+      showScreen("pause");
+      return;
+    }
+    continueAfterDoor();
+  }
+
+  function continueAfterDoor() {
+    if (state.results.length >= TOTAL_DOORS) {
+      renderSwitchCharacters();
+      showScreen("switch");
+      return;
+    }
+
+    if (!state.crossShown && state.results.length >= 3) {
+      state.crossShown = true;
+      renderCross();
+      showScreen("cross");
+      return;
+    }
+
+    $("#wheelHint").textContent = "La rueda elegirá una dimensión que todavía no hayas recorrido.";
+    showScreen("wheel");
+  }
+
+  function renderCross() {
+    const visited = state.results.map((result) => result.dimensionId);
+    let match = CONTENT.intersections.find((item) => item.ids.every((id) => visited.includes(id)));
+
+    if (!match) {
+      const pair = state.results.slice(-2).map((item) => item.dimensionId);
+      match = {
+        ids: pair,
+        text: "Estas dos dimensiones no actúan por separado: el contexto de una persona puede hacer que la misma situación sea más fácil, más costosa o directamente inaccesible."
+      };
+    }
+
+    const [a, b] = match.ids.map(dimensionById);
+    $("#crossA").textContent = `${a.icon} ${a.name}`;
+    $("#crossB").textContent = `${b.icon} ${b.name}`;
+    $("#crossText").textContent = match.text;
+  }
+
+  function renderSwitchCharacters() {
+    renderCharacters(switchCharacterGrid, true);
+    $("#comparisonBox").hidden = true;
+    $("#finishSwitch").hidden = true;
+    state.switchCompared = false;
+  }
+
+  function compareCharacter(otherId) {
+    const original = byId(state.characterId);
+    const other = byId(otherId);
+    const sample = state.results.find((r) => r.status === "barrier") || state.results.find((r) => r.status === "context") || state.results[0];
+    const dim = dimensionById(sample.dimensionId);
+    const [originalStatus, originalNote] = original.access[sample.dimensionId];
+    const [otherStatus, otherNote] = other.access[sample.dimensionId];
+
+    $("#comparisonBox").innerHTML = `
+      <p class="kicker">Misma puerta · ${dim.icon} ${dim.name}</p>
+      <div class="comparison-grid">
+        <article><strong>${original.name}</strong><span class="status-pill status-pill--${originalStatus}">${statusLabel(originalStatus)}</span><p>${originalNote}</p></article>
+        <article><strong>${other.name}</strong><span class="status-pill status-pill--${otherStatus}">${statusLabel(otherStatus)}</span><p>${otherNote}</p></article>
+      </div>
+      <p class="comparison-question">¿La misma decisión tiene el mismo coste para las dos personas?</p>`;
+    $("#comparisonBox").hidden = false;
+    $("#finishSwitch").hidden = false;
+    state.switchCompared = true;
+    [...switchCharacterGrid.querySelectorAll(".character-card")].forEach((card) => card.classList.toggle("is-selected", card.dataset.character === otherId));
+  }
+
+  function renderMap() {
+    const buckets = { open: $("#mapOpen"), context: $("#mapContext"), barrier: $("#mapBarrier") };
+    Object.values(buckets).forEach((node) => { node.innerHTML = ""; });
+
+    state.results.forEach((result) => {
+      const dim = dimensionById(result.dimensionId);
+      const item = document.createElement("article");
+      item.className = "map-item";
+      item.innerHTML = `<strong>${dim.icon} ${dim.name}</strong><p>${result.note}</p>`;
+      buckets[result.status].append(item);
+    });
+
+    Object.entries(buckets).forEach(([status, node]) => {
+      if (!node.children.length) node.innerHTML = `<p class="empty-map">Ninguna de las puertas recorridas quedó aquí.</p>`;
+    });
+
+    const visited = state.results.map((r) => r.dimensionId);
+    const crosses = CONTENT.intersections.filter((item) => item.ids.every((id) => visited.includes(id)));
+    const summary = $("#crossSummary");
+    if (crosses.length) {
+      summary.innerHTML = `<p class="kicker">Tus cruces</p>${crosses.map((item) => {
+        const labels = item.ids.map((id) => dimensionById(id)).map((d) => `${d.icon} ${d.name}`).join(" + ");
+        return `<article><strong>${labels}</strong><p>${item.text}</p></article>`;
+      }).join("")}`;
+    } else {
+      summary.innerHTML = `<p class="kicker">Tus cruces</p><p>Las puertas recorridas ya muestran que las dimensiones cambian según el contexto. En otra partida aparecerán combinaciones diferentes.</p>`;
+    }
+  }
+
+  function chooseActionPath(path) {
+    const options = CONTENT.challenges[path];
+    const challenge = options[Math.floor(Math.random() * options.length)];
+    const labels = { ver: ["👁️ VER", "Mirar de otra manera"], acompanar: ["🤝 ACOMPAÑAR", "Repartir el coste de actuar"], cambiar: ["✊ CAMBIAR", "Mover una regla o un contexto"] };
+    $("#challengeCard").innerHTML = `<p class="kicker">Reto elegido · ${labels[path][0]}</p><h3>${labels[path][1]}</h3><p>${challenge}</p>`;
+    $("#challengeCard").hidden = false;
+    $("#restartButton").hidden = false;
+    $("#printButton").hidden = false;
+    [...document.querySelectorAll(".action-path")].forEach((button) => button.classList.toggle("is-selected", button.dataset.path === path));
+  }
+
+  function showRules() {
+    const current = currentScreenName();
+    state.returnScreen = current === "rules" ? state.returnScreen : current;
+    $("#rulesContinue").textContent = state.characterId ? "Volver al juego" : "Empezar a jugar";
+    showScreen("rules");
+  }
+
+  function leaveRules() {
+    state.rulesSeen = true;
+    const destination = state.characterId
+      ? (state.returnScreen && state.returnScreen !== "rules" ? state.returnScreen : "wheel")
+      : "mode";
+    showScreen(destination);
+  }
+
+  function handleAction(action) {
+    switch (action) {
+      case "home": resetState(); renderCharacters(characterGrid); showScreen("home"); break;
+      case "show-rules": showRules(); break;
+      case "rules-continue": leaveRules(); break;
+      case "rules-back": showScreen(state.returnScreen && state.returnScreen !== "rules" ? state.returnScreen : "home"); break;
+      case "show-about": showScreen("about"); break;
+      case "choose-mode": showScreen("mode"); break;
+      case "back-mode": showScreen("mode"); break;
+      case "random-character": {
+        const pick = CONTENT.characters[Math.floor(Math.random() * CONTENT.characters.length)];
+        chooseCharacter(pick.id);
+        break;
+      }
+      case "change-character": renderCharacters(characterGrid); showScreen("characters"); break;
+      case "spin": spinWheel(); break;
+      case "continue-door": commitDoor(); break;
+      case "resume-from-pause": continueAfterDoor(); break;
+      case "continue-cross": $("#wheelHint").textContent = "La rueda elegirá una dimensión que todavía no hayas recorrido."; showScreen("wheel"); break;
+      case "finish-switch": renderMap(); showScreen("map"); break;
+      case "go-action": showScreen("action"); break;
+      case "restart": resetState({ keepMode: true }); state.rulesSeen = true; renderCharacters(characterGrid); showScreen("characters"); break;
+      case "print": window.print(); break;
+      default: break;
+    }
+  }
+
+  document.addEventListener("click", (event) => {
+    const actionButton = event.target.closest("[data-action]");
+    if (actionButton) {
+      handleAction(actionButton.dataset.action);
+      return;
+    }
+
+    const modeButton = event.target.closest("[data-mode]");
+    if (modeButton) {
+      state.mode = modeButton.dataset.mode;
+      renderCharacters(characterGrid);
+      showScreen("characters");
+      return;
+    }
+
+    const characterButton = event.target.closest("#characterGrid [data-character]");
+    if (characterButton) {
+      chooseCharacter(characterButton.dataset.character);
+      return;
+    }
+
+    const switchButton = event.target.closest("#switchCharacterGrid [data-character]");
+    if (switchButton) {
+      compareCharacter(switchButton.dataset.character);
+      return;
+    }
+
+    const decisionButton = event.target.closest(".decision-option");
+    if (decisionButton) {
+      chooseDecision(decisionButton);
+      return;
+    }
+
+    const pathButton = event.target.closest("[data-path]");
+    if (pathButton) chooseActionPath(pathButton.dataset.path);
+  });
+
+  renderCharacters(characterGrid);
+  buildWheelLabels();
+})();
+
+  </script>
+</body>
+</html>
